@@ -17,7 +17,6 @@
 		6DE7527B1A2D5294007525F7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DE7526F1A2D5236007525F7 /* QuartzCore.framework */; };
 		6DE7527C1A2D5294007525F7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DE7526D1A2D522E007525F7 /* UIKit.framework */; };
 		6DE7527D1A2D5294007525F7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DE752771A2D526E007525F7 /* Foundation.framework */; };
-		6DE752801A2D6835007525F7 /* GMDCircleLoaderLicense.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DE7527F1A2D6835007525F7 /* GMDCircleLoaderLicense.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,8 +47,6 @@
 		6DE7526F1A2D5236007525F7 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		6DE752711A2D523B007525F7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		6DE752771A2D526E007525F7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		6DE7527E1A2D6835007525F7 /* GMDCircleLoaderLicense.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMDCircleLoaderLicense.h; path = Resources/GMDCircleLoaderLicense.h; sourceTree = "<group>"; };
-		6DE7527F1A2D6835007525F7 /* GMDCircleLoaderLicense.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMDCircleLoaderLicense.m; path = Resources/GMDCircleLoaderLicense.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,8 +125,6 @@
 			children = (
 				6DE7526A1A2D4EA5007525F7 /* GMDCircleLoader.h */,
 				6DE7526B1A2D4EA5007525F7 /* GMDCircleLoader.m */,
-				6DE7527E1A2D6835007525F7 /* GMDCircleLoaderLicense.h */,
-				6DE7527F1A2D6835007525F7 /* GMDCircleLoaderLicense.m */,
 			);
 			name = GMDCircleLoader;
 			sourceTree = "<group>";
@@ -286,7 +281,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6DE752651A2D4E61007525F7 /* ViewController.m in Sources */,
-				6DE752801A2D6835007525F7 /* GMDCircleLoaderLicense.m in Sources */,
 				6DE7526C1A2D4EA5007525F7 /* GMDCircleLoader.m in Sources */,
 				6DE752691A2D4E75007525F7 /* main.m in Sources */,
 				6DE752641A2D4E61007525F7 /* AppDelegate.m in Sources */,

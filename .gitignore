@@ -1,0 +1,4 @@
+# Mac OS X
+build
+._*
+*.DS_Store

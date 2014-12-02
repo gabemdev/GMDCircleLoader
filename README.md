@@ -1,5 +1,6 @@
 # GMDCircleLoader
 GMDCircleLoader is a neat and easy to use losing view meant to replicate Appleâ€™s progress loading view of an ongoing task. 
+
 ![GMDCircleLoader](https://i.cloudup.com/dsZY_7xvAi.gif)
 
 ## Installation
@@ -10,6 +11,7 @@ GMDCircleLoader is a neat and easy to use losing view meant to replicate Appleâ€
 
 ## Usage
 (see sample Xcode project)
+
 **Use GMDCircleLoader wisely! Bad use case examples: pull to refresh, infinite scrolling, sending message.**
 
 Using GMDCircleLoader in your app will usually look as simple as this:

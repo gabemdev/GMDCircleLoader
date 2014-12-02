@@ -50,13 +50,17 @@ You can include an image to show in the middle of the loading circle by simply u
 * Reduce view frame from bounds to something more manageable.
 
 ## Contributing to this project
-If you have feature requests or bug reports, feel free to help out by sending pull requests or by [creating new issues](https://github.com/gabemdev/GMDCircleLoader/issues/new). Please take a moment to review the guidelines written by [Nicolas Gallagher](https://github.com/necolas/):
+If you have feature requests or bug reports, feel free to help out by sending pull requests or by [creating new issues](https://github.com/gabemdev/GMDCircleLoader/issues/new). 
+
+Please take a moment to review the guidelines written by [Nicolas Gallagher](https://github.com/necolas/):
 * [Bug reports](https://github.com/necolas/issue-guidelines/blob/master/CONTRIBUTING.md#bugs)
 * [Feature requests](https://github.com/necolas/issue-guidelines/blob/master/CONTRIBUTING.md#features)
 * [Pull requests](https://github.com/necolas/issue-guidelines/blob/master/CONTRIBUTING.md#pull-requests)
 
 ## Credits
-GMDCircleLoader is brought to you by [Gabe Morales](http://gabemdev.com) and [contributors to the project](https://github.com/gabemdev/GMDCircleLoader/contributors). If you're using GMDCircleLoader in your project, attribution would be nice.
+GMDCircleLoader is brought to you by [Gabe Morales](http://gabemdev.com) and [contributors to the project](https://github.com/gabemdev/GMDCircleLoader/contributors). 
+
+If you're using GMDCircleLoader in your project, attribution would be nice.
 
 ## License
 GMDCircleLoader is released under MIT License.

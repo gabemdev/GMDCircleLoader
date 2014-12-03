@@ -17,7 +17,7 @@ GMDCircleLoader is a neat and easy to use loading view meant to replicate Appleâ
 Using GMDCircleLoader in your app will usually look as simple as this:
 ```objective-c
 - (void)loginTwitter:(id)sender {
-[GMDCircleLoading setOnView:self.view withTitle@"Loading..." animated:YES];
+[GMDCircleLoader setOnView:self.view withTitle:@"Loading..." animated:YES];
 [[Twitter sharedInstance] loginWithCompletion:^(TWTRSession *session, NSError *error) {
     if (session) {
         [GMDCircleLoading hideHUDFromView:self.view animated:YES];

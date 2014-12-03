@@ -134,12 +134,16 @@
     CGPoint center = CGPointMake(self.bounds.size.width/2, self.bounds.size.height/2);
     CGFloat radius = (self.bounds.size.width - _lineWidth)/2;
     
-    //Begin draw background
+    //----------------------
+    // Begin draw background
+    //----------------------
     
     UIBezierPath *processBackgroundPath = [UIBezierPath bezierPath];
     processBackgroundPath.lineWidth = _lineWidth;
     
-    //Make end angle to 90% of the progress
+    //---------------------------------------
+    // Make end angle to 90% of the progress
+    //---------------------------------------
     if (partial) {
         endAngle = (1.8f * (float)M_PI) + startAngle;
     }

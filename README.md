@@ -1,5 +1,5 @@
 # GMDCircleLoader
-GMDCircleLoader is a neat and easy to use losing view meant to replicate Apple’s progress loading view of an ongoing task. 
+GMDCircleLoader is a neat and easy to use loading view meant to replicate Apple’s progress loading view of an ongoing task. 
 
 ![GMDCircleLoader](http://cl.ly/YmrY/GMDCircleLoader.gif)
 

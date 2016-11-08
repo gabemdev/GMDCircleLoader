@@ -188,21 +188,27 @@
 }
 
 - (void)start {
-    self.isSpinning = YES;
-    [self drawBackgroundCircle:YES];
     
-    CABasicAnimation *rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
-    rotationAnimation.toValue = [NSNumber numberWithFloat:M_PI * 2.0];
-    rotationAnimation.duration = 1;
-    rotationAnimation.cumulative = YES;
-    rotationAnimation.repeatCount = HUGE_VALF;
-    [_backgroundLayer addAnimation:rotationAnimation forKey:@"rotationAnimation"];
+    if (!self.isSpinning) {
+        self.isSpinning = YES;
+        [self drawBackgroundCircle:YES];
+        
+        CABasicAnimation *rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+        rotationAnimation.toValue = [NSNumber numberWithFloat:M_PI * 2.0];
+        rotationAnimation.duration = 1;
+        rotationAnimation.cumulative = YES;
+        rotationAnimation.repeatCount = HUGE_VALF;
+        [_backgroundLayer addAnimation:rotationAnimation forKey:@"rotationAnimation"];
+    }
 }
 
 - (void)stop{
-    [self drawBackgroundCircle:NO];
-    [_backgroundLayer removeAllAnimations];
-    self.isSpinning = NO;
+    
+    if (self.isSpinning) {
+        [self drawBackgroundCircle:NO];
+        [_backgroundLayer removeAllAnimations];
+        self.isSpinning = NO;
+    }
 }
 
 @end

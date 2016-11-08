@@ -51,13 +51,20 @@
     label.text = title;
     [hud addSubview:label];
     
-    
     [hud start];
     [view addSubview:hud];
     float height = [[UIScreen mainScreen] bounds].size.height;
     float width = [[UIScreen mainScreen] bounds].size.width;
     CGPoint center = CGPointMake(width/2, height/2);
     hud.center = center;
+    
+    if (animated) {
+        [hud setAlpha:.0f];
+        [UIView animateWithDuration:.3f animations:^{
+            [hud setAlpha:1.0f];
+        }];
+    }
+    
     return hud;
 }
 
@@ -68,7 +75,15 @@
     GMDCircleLoader *hud = [GMDCircleLoader HUDForView:view];
     [hud stop];
     if (hud) {
-        [hud removeFromSuperview];
+        if (animated) {
+            [UIView animateWithDuration:.3f animations:^{
+                [hud setAlpha:.0f];
+            } completion:^(BOOL finished) {
+                [hud removeFromSuperview];
+            }];
+        }else{
+            [hud removeFromSuperview];
+        }
         return YES;
     }
     return NO;
@@ -116,7 +131,7 @@
     _backgroundLayer.lineWidth = _lineWidth;
     [self.layer addSublayer:_backgroundLayer];
     
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(restartAnimations) name:UIApplicationWillEnterForegroundNotification object:NULL];
 }
 
 - (void)drawRect:(CGRect)rect {
@@ -152,6 +167,13 @@
 }
 
 #pragma mark - Spin
+
+- (void)restartAnimations {
+    if (self.isSpinning) {
+        [self start];
+    }
+}
+
 - (void)start {
     self.isSpinning = YES;
     [self drawBackgroundCircle:YES];

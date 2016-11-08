@@ -43,7 +43,7 @@
     //    img.image = GMD_IMAGE;
     //    hud.center = img.center;
     //    [hud addSubview:img];
-
+    
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(-70.0f, 40.0f, 200.0f, 42.0f)];
     label.font = [UIFont boldSystemFontOfSize:18.0f];
     label.textColor = GMD_SPINNER_COLOR;
@@ -106,7 +106,16 @@
 
 #pragma mark - Initialization
 - (instancetype)initWithFrame:(CGRect)frame {
-    if ((self = [super initWithFrame:frame])) {
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self setup];
+    }
+    return self;
+}
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
         [self setup];
     }
     return self;

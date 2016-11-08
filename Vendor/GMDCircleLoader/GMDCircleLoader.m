@@ -134,6 +134,10 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(restartAnimations) name:UIApplicationWillEnterForegroundNotification object:NULL];
 }
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void)drawRect:(CGRect)rect {
     //-------------------------
     // Make sure layers cover the whole view

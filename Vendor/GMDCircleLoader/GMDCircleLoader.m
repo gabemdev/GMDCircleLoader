@@ -43,7 +43,7 @@
     //    img.image = GMD_IMAGE;
     //    hud.center = img.center;
     //    [hud addSubview:img];
-
+    
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(-70.0f, 40.0f, 200.0f, 42.0f)];
     label.font = [UIFont boldSystemFontOfSize:18.0f];
     label.textColor = GMD_SPINNER_COLOR;
@@ -51,13 +51,20 @@
     label.text = title;
     [hud addSubview:label];
     
-    
     [hud start];
     [view addSubview:hud];
     float height = [[UIScreen mainScreen] bounds].size.height;
     float width = [[UIScreen mainScreen] bounds].size.width;
     CGPoint center = CGPointMake(width/2, height/2);
     hud.center = center;
+    
+    if (animated) {
+        [hud setAlpha:.0f];
+        [UIView animateWithDuration:.3f animations:^{
+            [hud setAlpha:1.0f];
+        }];
+    }
+    
     return hud;
 }
 
@@ -68,7 +75,15 @@
     GMDCircleLoader *hud = [GMDCircleLoader HUDForView:view];
     [hud stop];
     if (hud) {
-        [hud removeFromSuperview];
+        if (animated) {
+            [UIView animateWithDuration:.3f animations:^{
+                [hud setAlpha:.0f];
+            } completion:^(BOOL finished) {
+                [hud removeFromSuperview];
+            }];
+        }else{
+            [hud removeFromSuperview];
+        }
         return YES;
     }
     return NO;
@@ -91,7 +106,16 @@
 
 #pragma mark - Initialization
 - (instancetype)initWithFrame:(CGRect)frame {
-    if ((self = [super initWithFrame:frame])) {
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self setup];
+    }
+    return self;
+}
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
         [self setup];
     }
     return self;
@@ -116,7 +140,11 @@
     _backgroundLayer.lineWidth = _lineWidth;
     [self.layer addSublayer:_backgroundLayer];
     
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(restartAnimations) name:UIApplicationWillEnterForegroundNotification object:NULL];
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)drawRect:(CGRect)rect {
@@ -152,22 +180,35 @@
 }
 
 #pragma mark - Spin
+
+- (void)restartAnimations {
+    if (self.isSpinning) {
+        [self start];
+    }
+}
+
 - (void)start {
-    self.isSpinning = YES;
-    [self drawBackgroundCircle:YES];
     
-    CABasicAnimation *rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
-    rotationAnimation.toValue = [NSNumber numberWithFloat:M_PI * 2.0];
-    rotationAnimation.duration = 1;
-    rotationAnimation.cumulative = YES;
-    rotationAnimation.repeatCount = HUGE_VALF;
-    [_backgroundLayer addAnimation:rotationAnimation forKey:@"rotationAnimation"];
+    if (!self.isSpinning) {
+        self.isSpinning = YES;
+        [self drawBackgroundCircle:YES];
+        
+        CABasicAnimation *rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+        rotationAnimation.toValue = [NSNumber numberWithFloat:M_PI * 2.0];
+        rotationAnimation.duration = 1;
+        rotationAnimation.cumulative = YES;
+        rotationAnimation.repeatCount = HUGE_VALF;
+        [_backgroundLayer addAnimation:rotationAnimation forKey:@"rotationAnimation"];
+    }
 }
 
 - (void)stop{
-    [self drawBackgroundCircle:NO];
-    [_backgroundLayer removeAllAnimations];
-    self.isSpinning = NO;
+    
+    if (self.isSpinning) {
+        [self drawBackgroundCircle:NO];
+        [_backgroundLayer removeAllAnimations];
+        self.isSpinning = NO;
+    }
 }
 
 @end

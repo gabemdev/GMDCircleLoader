@@ -18,11 +18,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    // Do any additional setup after loading the view, typically from a nib
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
     
+    [self performSelector:@selector(showCircleLoader) withObject:nil afterDelay:5];
+    //[self performSelector:@selector(stopCircleLoader) withObject:nil afterDelay:8];
+}
+
+- (void)showCircleLoader {
     [GMDCircleLoader setOnView:self.view withTitle:@"Loading..." animated:YES];
-   
-//    [self performSelector:@selector(stopCircleLoader) withObject:nil afterDelay:5];
 }
 
 - (void)stopCircleLoader {
